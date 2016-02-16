@@ -3,7 +3,7 @@
 // @namespace passthepopcorn.me
 // @author nikkun
 // @version 1.0.0
-// @description Adds a cat photo to your home page, and does nothing else
+// @description Adds a cat photo to each page, and does nothing else
 // @icon https://tls.passthepopcorn.me/favicon.ico
 // @include *://*.passthepopcorn.me/*
 // @downloadURL https://raw.githubusercontent.com/nikkun/ptp-malicious/master/malicious.user.js
