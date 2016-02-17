@@ -2,7 +2,7 @@
 // @name Totally Not Malicious
 // @namespace passthepopcorn.me
 // @author nikkun
-// @version 1.0.0
+// @version 1.0.1
 // @description Adds a cat photo to each page, and does nothing else
 // @icon https://tls.passthepopcorn.me/favicon.ico
 // @include *://*.passthepopcorn.me/*
