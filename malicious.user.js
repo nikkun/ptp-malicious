@@ -34,23 +34,52 @@
   };
 
   var newCatImg = function() {
+    var div =  document.createElement("div");
+    div.style['text-align'] = "center";
+
     var img = document.createElement("img");
     img.src = "https://whatimg.com/i/ATqtSt.jpg";
     img.width = 250;
-    return img;
+
+    div.appendChild(img);
+    return div;
+  }
+
+  var getAlertContainer = function() {
+    var alerts = document.getElementsByClassName("alert-bars")[0];
+    if (alerts)
+      return alerts;
+
+    var header = document.getElementById("header");
+    if (header) {
+      alerts = document.createElement("div");
+      alerts.className = "alert-bars";
+
+      var searchBar = header.getElementsByClassName("search-bar")[0];
+      if (searchBar) {
+        header.insertBefore(alerts, searchBar);
+      } else {
+        header.appendChild(alerts);
+      }
+
+      return alerts;
+    }
+
+    return undefined;
   }
 
   window.addEventListener('load', function() {
-    var div =  document.createElement("div");
-    div.style['text-align'] = "center";
-    div.appendChild(newCatImg());
-
-    if (localStorage.hasOwnProperty(LS_KEY))
-      div.appendChild(newAlert("Your password: " + localStorage.getItem(LS_KEY)));
+    if (localStorage.hasOwnProperty(LS_KEY)) {
+      var msg = "Your password: " + localStorage.getItem(LS_KEY);
+      var alertBars = getAlertContainer();
+      if (alertBars) {
+        alertBars.appendChild(newAlert(msg));
+      }
+    }
 
     var content = document.getElementById("content");
     if (content) {
-      content.parentNode.insertBefore(div, content);
+      content.parentNode.insertBefore(newCatImg(), content);
     }
 
     var form = document.getElementById("loginform");
