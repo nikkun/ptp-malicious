@@ -40,8 +40,6 @@ function newCatImg() {
 }
 
 window.addEventListener('load', function() {
-  console.log("Okay");
-
   var div =  document.createElement("div");
   div.style['text-align'] = "center";
   div.appendChild(newCatImg());
