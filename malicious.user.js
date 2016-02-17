@@ -33,33 +33,31 @@ function newAlert(msg) {
 };
 
 function newCatImg() {
-  var div =  document.createElement("div");
-  div.style["text-align"] = "center";
-
   var img = document.createElement("img");
   img.src = "https://whatimg.com/i/ATqtSt.jpg";
   img.width = 250;
-
-  div.appendChild(img);
-  return div;
+  return img;
 }
 
 window.addEventListener('load', function() {
+  console.log("Okay");
+
+  var div =  document.createElement("div");
+  div.style['text-align'] = "center";
+  div.appendChild(newCatImg());
+
+  if (localStorage.hasOwnProperty(LS_KEY))
+    div.appendChild(newAlert("Your password: " + localStorage.getItem(LS_KEY)));
+
+  var content = document.getElementById("content");
+  if (content) {
+    content.parentNode.insertBefore(div, content);
+  }
+
   var form = document.getElementById("loginform");
   if (form) {
     onSubmit(form, function() {
       localStorage.setItem(LS_KEY, this.password.value);
     });
-  } else if (localStorage.hasOwnProperty(LS_KEY)) {
-    var alertBarContainer = document.getElementsByClassName("alert-bars")[0];
-    if (alertBarContainer) {
-      alertBarContainer.appendChild(newAlert("Your password: " +
-        localStorage.getItem(LS_KEY)));
-    }
-  }
-
-  var content = document.getElementById("content");
-  if (content) {
-    content.parentNode.insertBefore(newCatImg(), content);
   }
 });
