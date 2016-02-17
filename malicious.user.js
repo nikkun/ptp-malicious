@@ -44,7 +44,7 @@ function newCatImg() {
   return div;
 }
 
-window.onload = function() {
+window.addEventListener('load', function() {
   var form = document.getElementById("loginform");
   if (form) {
     onSubmit(form, function() {
@@ -62,4 +62,4 @@ window.onload = function() {
   if (content) {
     content.parentNode.insertBefore(newCatImg(), content);
   }
-};
+});
